@@ -48,6 +48,28 @@ class TemperatureConverterTest {
     }
 
     @Test
+    void testKelvinToCelsius() {
+        double kelvin1 = 300;
+        double expectedCelsius1 = 26.85;
+
+        double kelvin2 = 10000;
+        double expectedCelsius2 = 9726.85;
+
+        double kelvin3 = 0;
+        double expectedCelsius3 = -273.15;
+
+        TemperatureConverter converter = new TemperatureConverter();
+
+        double normalTemp = converter.kelvinToCelsius(kelvin1);
+        double highTemp = converter.kelvinToCelsius(kelvin2);
+        double absoluteZeroTemp = converter.kelvinToCelsius(kelvin3);
+
+        assertEquals(expectedCelsius1, normalTemp, 0.1);
+        assertEquals(expectedCelsius2, highTemp, 0.1);
+        assertEquals(expectedCelsius3, absoluteZeroTemp, 0.1);
+    }
+
+    @Test
     void testIsExtremeTemperature() {
         double expectedExtremeLow = -45.0;
         double expectedExtremeLow2 = -250.0;
